@@ -69,6 +69,13 @@ namespace AboProto {
 
                 Destroy(other.gameObject);
             }
+
+            if(other.gameObject.name.Equals("NormalMan(Clone)")) {
+                //BeatEff();
+                if(!isDefeatToEnemy) StartCoroutine(GenerateHyahhaMan(other.transform.position));
+
+                Destroy(other.gameObject);
+            }
         }
 
         //============================================================================
@@ -239,7 +246,22 @@ namespace AboProto {
         private IEnumerator GenerateNormalMan (Vector3 pos) {
             isDefeatToEnemy = true;
             GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
-            obj.GetComponent<NormalMan>().IsRepair = true;
+            obj.GetComponent<Collider>().enabled = false;
+            obj.GetComponent<Man>().IsRepair = true;
+            obj.transform.position = pos;
+            yield return new WaitForSeconds(0.1f);
+
+            isDefeatToEnemy = false;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// ヒャッハーな人の生成
+        /// </summary>
+        private IEnumerator GenerateHyahhaMan (Vector3 pos) {
+            isDefeatToEnemy = true;
+            GameObject obj = Instantiate(Resources.Load("HyahhaMan")) as GameObject;
+            obj.GetComponent<Man>().IsRepair = true;
             obj.transform.position = pos;
             yield return new WaitForSeconds(0.1f);
 

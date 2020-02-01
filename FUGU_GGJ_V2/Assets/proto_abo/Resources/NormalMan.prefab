@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 3170651085970894786}
   - component: {fileID: 161813560}
   - component: {fileID: 3312799649209927134}
+  - component: {fileID: 136761553058931448}
   m_Layer: 0
   m_Name: NormalMan
   m_TagString: Untagged
@@ -462,6 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f35c5b6e877cd4098c0d457e966282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRepair: 0
 --- !u!114 &3312799649209927134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +478,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   deletePosition: -5
+--- !u!136 &136761553058931448
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170651085980354616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!1 &3170651085980355324
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4325780680926761297}
   - component: {fileID: 4325780680926761298}
   m_Layer: 0
-  m_Name: GenerateController
+  m_Name: EnemyGenerateController
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4325780680926761299}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.4089384, y: 0, z: -12.885483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -45,9 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftX: -4.5
   rightX: 4.5
-  frontZ: 9
-  speed: 0.1
+  frontZ: 18
+  speed: 0
   startTime: 1
   generateTime: 1
   prefabs:
   - {fileID: 1409266115221541758, guid: 06a8f9909d8cc5343af8c44c2de57e0c, type: 3}
+  - {fileID: 3170651085980354616, guid: ec3bb97796de79f4dbee7de94ed133e3, type: 3}

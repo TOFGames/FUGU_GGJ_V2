@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
 
-public class NormalMan : MonoBehaviour {
+public class Man : MonoBehaviour {
     private FlowController flowController;
 
     private float speed = 0.05f;

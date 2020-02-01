@@ -233,7 +233,7 @@ namespace AboProto {
         /// </summary>
         private GameObject GenerateNormalMan (Vector3 pos) {
             GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
-            obj.GetComponent<NormalMan>().IsRepair = true;
+            obj.GetComponent<Man>().IsRepair = true;
             obj.transform.position = pos;
             return obj;
         }
