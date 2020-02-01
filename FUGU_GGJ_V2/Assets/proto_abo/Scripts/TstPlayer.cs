@@ -50,7 +50,7 @@ namespace AboProto {
         }
 
         private void OnCollisionEnter (Collision collision) {
-            if(collision.gameObject.name.Equals("Plane")) {
+            if(collision.gameObject.name.Equals("Plane") || collision.gameObject.name.Equals("RoadMovingPlane(Clone)")) {
                 _animator.SetBool("IsJump",false);
             }
         }
@@ -134,6 +134,8 @@ namespace AboProto {
             _animator.SetFloat("AnimSpeed",1);
             _particleSystem.startSpeed = 5;
             _particleSystem.startLifetime = 5;
+
+            parameterManager.BackgroundSpeed = 0.1f;
         }
 
         //============================================================================
@@ -144,6 +146,8 @@ namespace AboProto {
             _animator.SetFloat("AnimSpeed",3);
             _particleSystem.startSpeed = 10;
             _particleSystem.startLifetime = 0.5f;
+
+            parameterManager.BackgroundSpeed = 0.3f;
         }
 
         //============================================================================
