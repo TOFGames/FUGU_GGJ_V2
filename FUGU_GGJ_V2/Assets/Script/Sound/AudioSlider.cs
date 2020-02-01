@@ -5,15 +5,29 @@ using UnityEngine.UI;
 public class AudioSlider : MonoBehaviour
 {
         Slider slider;
-        string test;
+        object[] bgmData;
+        object[] seData;
+        public bool swich=false;//どのスライダーか判断　trueならBGM
         void Start()
         {
-                test="a";
                 slider=GetComponent<Slider>();
+                bgmData = Resources.LoadAll("Audio/BGM");//データ抽出
+                seData = Resources.LoadAll("Audio/SE");
+                //音声ファイルの場所をAudioManegerと合わせる必要あり
         }
         public void valueget(){
-                Debug.Log(slider.value);
-                AboProto.AudioManager.Instance.SetBGMVolume(test,slider.value);
+                //Debug.Log(slider.value);
                 //音声のファイル名すべて入れる必要あり
+                if(swich==true) {
+                        foreach(AudioClip bgm in bgmData) {
+                                //Debug.Log(bgm.name);//名前表示
+                                AboProto.AudioManager.Instance.SetBGMVolume(bgm.name,slider.value);
+                        }
+                }else{
+                        foreach(AudioClip bgm in seData) {
+                                //Debug.Log(bgm.name);//名前表示
+                                AboProto.AudioManager.Instance.SetBGMVolume(bgm.name,slider.value);
+                        }
+                }
         }
 }
