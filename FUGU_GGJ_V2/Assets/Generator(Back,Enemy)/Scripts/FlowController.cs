@@ -26,6 +26,7 @@ public class FlowController : MonoBehaviour
         transform.Translate(0,0, speed);
 
         if(transform.position.z <= deletePosition){
+            //Hyahaaaの顔呼び出し
             Destroy(gameObject);
         }
     }
