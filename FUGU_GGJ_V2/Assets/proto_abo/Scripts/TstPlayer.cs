@@ -7,11 +7,11 @@ namespace AboProto {
     /// テスト用プレイヤー
     /// </summary>
     public class TstPlayer : MonoBehaviour {
+        private ParameterManager parameterManager;
         private Rigidbody _rigidbody;
         private Animator _animator;
         private ParticleSystem _particleSystem;
         private GameObject _canvas;
-
         private GameObject beatEff;
 
         /// <summary>
@@ -31,10 +31,13 @@ namespace AboProto {
 
         //============================================================================
         private void Awake () {
+            parameterManager = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
             _rigidbody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
             _particleSystem = transform.Find("Saturated").GetComponent<ParticleSystem>();
             _canvas = GameObject.Find("Canvas").gameObject;
+
+            AudioManager.Instance.PlayBGM("aiwo",true);
         }
 
         private void Update () {
@@ -44,6 +47,15 @@ namespace AboProto {
         private void OnCollisionEnter (Collision collision) {
             if(collision.gameObject.name.Equals("Plane")) {
                 _animator.SetBool("IsJump",false);
+            }
+
+            if(collision.gameObject.name.Equals("Hyahaa_v1_variable_T")) {
+                parameterManager.Hp--;
+                if(parameterManager.Hp > 0) {
+                    StartCoroutine(Defeat(10));
+                } else {
+
+                }
             }
         }
 
@@ -76,6 +88,10 @@ namespace AboProto {
 
             if(Input.GetKeyDown(KeyCode.A)) {
                 BeatEff();
+            }
+
+            if(Input.GetKeyDown(KeyCode.B)) {
+                StartCoroutine(Defeat(10));
             }
 
             if(_rigidbody.position.x <= -posLimit.x) {
@@ -183,6 +199,33 @@ namespace AboProto {
         /// </summary>
         private void ActivateBeatEff () {
             beatEff.SetActive(true);
+            transform.eulerAngles = Vector3.zero;
+        }
+
+        //============================================================================
+        private IEnumerator Defeat (float rate) {
+            GameObject obj = transform.Find("Dummy").gameObject;
+
+            float time = 0;
+            float count = 0;
+
+            while(true) {
+                if(time >= count / rate) {
+                    count++;
+                }
+
+                time += Time.deltaTime;
+                if(time >= 1) {
+                    time = 0;
+                    break;
+                }
+
+                obj.SetActive(count % 2 == 0 ? true : false);
+
+                yield return null;
+            }
+
+            yield return null;
         }
     }
 }
