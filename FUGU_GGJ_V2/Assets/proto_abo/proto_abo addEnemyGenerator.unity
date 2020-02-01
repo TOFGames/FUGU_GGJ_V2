@@ -790,56 +790,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key2.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime2
-      value: 45875
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime3
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime1
-      value: 19661
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key1.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 53727145871187692, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174216577999707083, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: m_Pivot.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174216577999707083, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6586454069631777450, guid: 535c2df5584cf114082fd45b05ef7dc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -899,11 +849,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TstPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 9166217741847065967, guid: 535c2df5584cf114082fd45b05ef7dc2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 535c2df5584cf114082fd45b05ef7dc2, type: 3}

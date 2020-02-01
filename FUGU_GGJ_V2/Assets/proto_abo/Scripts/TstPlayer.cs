@@ -15,6 +15,11 @@ namespace AboProto {
         private GameObject beatEff;
 
         /// <summary>
+        /// ノックバック中判定
+        /// </summary>
+        private bool isKnockBack;
+
+        /// <summary>
         /// x軸方向のスピード
         /// </summary>
         private Vector3 xSpeed = new Vector3(0.1f,0,0);
@@ -48,14 +53,12 @@ namespace AboProto {
             if(collision.gameObject.name.Equals("Plane")) {
                 _animator.SetBool("IsJump",false);
             }
+        }
 
-            if(collision.gameObject.name.Equals("Hyahaa_v1_variable_T")) {
-                parameterManager.Hp--;
-                if(parameterManager.Hp > 0) {
-                    StartCoroutine(Defeat(10));
-                } else {
-
-                }
+        private void OnTriggerEnter (Collider other) {
+            if(other.gameObject.name.Equals("GenerateHyahaa(Clone)")) {
+                BeatEff();
+                Destroy(other.gameObject);
             }
         }
 
@@ -104,6 +107,20 @@ namespace AboProto {
                 Vector3 attachPos = _rigidbody.position;
                 attachPos.x = posLimit.x;
                 _rigidbody.position = attachPos;
+            }
+        }
+
+        //============================================================================
+        /// <summary>
+        /// ダメージ
+        /// </summary>
+        private void Damage () {
+            if(isKnockBack) return;
+            parameterManager.Hp--;
+            if(parameterManager.Hp > 0) {
+                StartCoroutine(Defeat(10));
+            } else {
+
             }
         }
 
@@ -204,6 +221,7 @@ namespace AboProto {
 
         //============================================================================
         private IEnumerator Defeat (float rate) {
+            isKnockBack = true;
             GameObject obj = transform.Find("Dummy").gameObject;
 
             float time = 0;
@@ -225,6 +243,7 @@ namespace AboProto {
                 yield return null;
             }
 
+            isKnockBack = false;
             yield return null;
         }
     }

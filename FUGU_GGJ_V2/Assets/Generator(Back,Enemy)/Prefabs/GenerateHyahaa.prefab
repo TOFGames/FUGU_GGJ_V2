@@ -2368,6 +2368,7 @@ GameObject:
   - component: {fileID: 1409266115221245790}
   - component: {fileID: 1409266115214254242}
   - component: {fileID: 1421492823266336871}
+  - component: {fileID: 2341278892705924716}
   m_Layer: 0
   m_Name: GenerateHyahaa
   m_TagString: Untagged
@@ -2424,3 +2425,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   deletePosition: -5
+--- !u!136 &2341278892705924716
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409266115221541758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0}
