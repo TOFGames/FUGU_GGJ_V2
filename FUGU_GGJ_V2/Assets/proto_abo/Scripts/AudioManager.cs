@@ -4,8 +4,8 @@ using UnityEngine;
 //using UnityEngine.UI;
 
 namespace AboProto {
-    [DefaultExecutionOrder(-100)]
-    public class AudioManager : SingletonMonoBehaviour<AudioManager> {
+[DefaultExecutionOrder(-100)]
+public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         private const int BGM_NUM = 3;
         private const int SE_NUM = 1;
 
@@ -19,47 +19,47 @@ namespace AboProto {
 
         //=============================================================
         private void Init () {
-            //SE、BGMの数分だけAudioSourceを追加
-            for(int i = 0;i < BGM_NUM + SE_NUM;i++) {
-                gameObject.AddComponent<AudioSource>();
-            }
-
-            AudioSource[] audioSourceArray = GetComponents<AudioSource>();
-
-            for(int i = 0;i < audioSourceArray.Length;i++) {
-                audioSourceArray[i].playOnAwake = false;
-
-                //BGM、SE設定
-                if(i < BGM_NUM) {
-                    audioSourceArray[i].loop = true;
-                    bgmSourceList.Add(audioSourceArray[i]);
-                } else {
-                    seSourceList.Add(audioSourceArray[i]);
+                //SE、BGMの数分だけAudioSourceを追加
+                for(int i = 0; i < BGM_NUM + SE_NUM; i++) {
+                        gameObject.AddComponent<AudioSource>();
                 }
-            }
 
-            object[] bgmData = Resources.LoadAll("Audio/BGM");
-            object[] seData = Resources.LoadAll("Audio/SE");
+                AudioSource[] audioSourceArray = GetComponents<AudioSource>();
 
-            foreach(AudioClip bgm in bgmData) {
-                bgmDic[bgm.name] = bgm;
-                bgmBPM[bgm.name] = AddBPM();
-            }
+                for(int i = 0; i < audioSourceArray.Length; i++) {
+                        audioSourceArray[i].playOnAwake = false;
 
-            foreach(AudioClip se in seData) {
-                seDic[se.name] = se;
-            }
+                        //BGM、SE設定
+                        if(i < BGM_NUM) {
+                                audioSourceArray[i].loop = true;
+                                bgmSourceList.Add(audioSourceArray[i]);
+                        } else {
+                                seSourceList.Add(audioSourceArray[i]);
+                        }
+                }
+
+                object[] bgmData = Resources.LoadAll("Audio/BGM");
+                object[] seData = Resources.LoadAll("Audio/SE");
+
+                foreach(AudioClip bgm in bgmData) {
+                        bgmDic[bgm.name] = bgm;
+                        bgmBPM[bgm.name] = AddBPM();
+                }
+
+                foreach(AudioClip se in seData) {
+                        seDic[se.name] = se;
+                }
         }
 
         private void Awake () {
-            //Instance化をすでにしてるなら
-            if(this != Instance) {
-                Destroy(this);
-                return;
-            }
+                //Instance化をすでにしてるなら
+                if(this != Instance) {
+                        Destroy(this);
+                        return;
+                }
 
-            DontDestroyOnLoad(this.gameObject);
-            Init();
+                DontDestroyOnLoad(this.gameObject);
+                Init();
         }
 
         //=============================================================
@@ -67,8 +67,8 @@ namespace AboProto {
         private int addbmpNum;
         private float[] addbpmData = { 178,999,999,999,999 };
         private float AddBPM () {
-            addbmpNum++;
-            return addbpmData[addbmpNum - 1];
+                addbmpNum++;
+                return addbpmData[addbmpNum - 1];
         }
 
         //=============================================================
@@ -76,14 +76,14 @@ namespace AboProto {
         /// seをならす
         /// </summary>
         public void PlaySE (string name) {
-            if(!seDic.ContainsKey(name)) {
-                return;
-            }
+                if(!seDic.ContainsKey(name)) {
+                        return;
+                }
 
-            foreach(AudioSource se in seSourceList) {
-                se.PlayOneShot(seDic[name] as AudioClip);
-                return;
-            }
+                foreach(AudioSource se in seSourceList) {
+                        se.PlayOneShot(seDic[name] as AudioClip);
+                        return;
+                }
         }
 
         //=============================================================
@@ -91,19 +91,19 @@ namespace AboProto {
         /// bgmをならす
         /// </summary>
         public void PlayBGM (string name,bool isLoop) {
-            if(!bgmDic.ContainsKey(name)) {
-                return;
-            }
-
-
-            for(int i = 0;i < bgmSourceList.Count;i++) {
-                if(!bgmSourceList[i].isPlaying) {
-                    bgmSourceList[i].clip = bgmDic[name] as AudioClip;
-                    bgmSourceList[i].loop = isLoop;
-                    bgmSourceList[i].Play();
-                    return;
+                if(!bgmDic.ContainsKey(name)) {
+                        return;
                 }
-            }
+
+
+                for(int i = 0; i < bgmSourceList.Count; i++) {
+                        if(!bgmSourceList[i].isPlaying) {
+                                bgmSourceList[i].clip = bgmDic[name] as AudioClip;
+                                bgmSourceList[i].loop = isLoop;
+                                bgmSourceList[i].Play();
+                                return;
+                        }
+                }
         }
 
         //=============================================================
@@ -111,9 +111,9 @@ namespace AboProto {
         /// bgmを止める
         /// </summary>
         public void StopBGM () {
-            foreach(AudioSource bgm in bgmSourceList) {
-                bgm.Stop();
-            }
+                foreach(AudioSource bgm in bgmSourceList) {
+                        bgm.Stop();
+                }
         }
 
         //=============================================================
@@ -121,24 +121,24 @@ namespace AboProto {
         /// bgmのボリュームを変える
         /// </summary>
         public void SetBGMVolume (string name,float volume) {
-            if(!bgmDic.ContainsKey(name)) {
-                return;
-            }
-
-            int containIndex = -1;
-            for(int i = 0;i < bgmSourceList.Count;i++) {
-                if(bgmSourceList[i].clip) {
-                    if(bgmSourceList[i].clip.name == name) {
-                        containIndex = i;
-                    }
+                if(!bgmDic.ContainsKey(name)) {
+                        return;
                 }
-            }
 
-            if(containIndex == -1) {
-                return;
-            }
+                int containIndex = -1;
+                for(int i = 0; i < bgmSourceList.Count; i++) {
+                        if(bgmSourceList[i].clip) {
+                                if(bgmSourceList[i].clip.name == name) {
+                                        containIndex = i;
+                                }
+                        }
+                }
 
-            bgmSourceList[containIndex].volume = volume;
+                if(containIndex == -1) {
+                        return;
+                }
+
+                bgmSourceList[containIndex].volume = volume;//数値変え
         }
 
         //=============================================================
@@ -146,7 +146,7 @@ namespace AboProto {
         /// bgmの現在時間を取得
         /// </summary>
         public float GetBGMTime (int index) {
-            return bgmSourceList[index].time;
+                return bgmSourceList[index].time;
         }
 
         //=============================================================
@@ -154,11 +154,11 @@ namespace AboProto {
         /// bgmの時間の長さを取得
         /// </summary>
         public float GetBGMTimeLength (string name) {
-            if(!bgmDic.ContainsKey(name)) {
-                return -1;
-            }
+                if(!bgmDic.ContainsKey(name)) {
+                        return -1;
+                }
 
-            return bgmDic[name].length;
+                return bgmDic[name].length;
         }
 
         //=============================================================
@@ -166,11 +166,11 @@ namespace AboProto {
         /// bpmから逆算してタイミングを取得する
         /// </summary>
         public float GetBGMTimingFromBPM (string name,int index) {
-            if(!bgmDic.ContainsKey(name)) {
-                return -1;
-            }
+                if(!bgmDic.ContainsKey(name)) {
+                        return -1;
+                }
 
-            return GetBGMTime(index) / (60 / bgmBPM[name]);
+                return GetBGMTime(index) / (60 / bgmBPM[name]);
         }
-    }
+}
 }
