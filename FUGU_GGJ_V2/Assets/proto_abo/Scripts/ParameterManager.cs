@@ -33,10 +33,27 @@ public class ParameterManager : MonoBehaviour {
             set { backgroundSpeed = value; }
         }
 
+        
+        /// <summary>
+        /// スコア
+        /// </summary>
+        private int score;
+
+        /// <summary>
+        /// 速スコア(プロパティ)
+        /// </summary>
+        public int Score{
+            get { return score; }
+            set { score = value; }
+        }
+        
+
         //====================================================
         private void Awake () {
             hp = maxHp;
 
             backgroundSpeed = 0.1f;//for Test
+
+            score = 0;
         }
 }
