@@ -12,7 +12,7 @@ public class BlindController : MonoBehaviour
         set{ isLeftBlind = value; }
     }
 
-    private bool movigLeft = false;
+    public bool movingLeft = false;
 
     private bool isRightBlind = false;
 
@@ -21,7 +21,7 @@ public class BlindController : MonoBehaviour
         set{ isRightBlind = value; }
     }
 
-    private bool movigRight = false;
+    public bool movingRight = false;
 
 
 
@@ -45,20 +45,22 @@ public class BlindController : MonoBehaviour
     
     void FixedUpdate()
     {
-        if(isLeftBlind == true && movigLeft == false){//バグる
+        if(isLeftBlind == true && movingLeft == false){//バグる
             isLeftBlind = false;
-            StartCoroutine(GoBlind(leftHyahaaa, movigLeft));
+            movingLeft = true;
+            StartCoroutine(GoBlindLeft(leftHyahaaa));
         }
 
-        if(isRightBlind == true && movigRight  == false){
+        if(isRightBlind == true && movingRight  == false){
             isRightBlind = false;
-            StartCoroutine(GoBlind(rightHyahaa, movigRight));
+            movingRight = true;
+            StartCoroutine(GoBlindRight(rightHyahaa));
         }
     }
 
-    public IEnumerator GoBlind(GameObject blind, bool moving){
+    public IEnumerator GoBlindLeft(GameObject blind){
 
-      moving = true;
+     // moving = true;
 
       blind.SetActive(true);
 
@@ -80,19 +82,55 @@ public class BlindController : MonoBehaviour
       //Voice「ヒャッはあああああああああああああ！！！！！」
 
       for(int i=0; i< blindTime; i++){
-        //this.gameObject.transform.Translate();
         //moveHyahaaa.gameObject.transform.Translate(-0.01f/60.0f, -0.03f/60.0f, -0.01f/60.0f);
         blind.transform.Translate(new Vector3(-0.33f, -0.77f, 0.0f) / blindTime);
 
         yield return null;
       }
 
+       movingLeft = false;
        blind.SetActive(false);
 
        yield return null;
+    }
 
-       moving = false;
+
+    public IEnumerator GoBlindRight(GameObject blind){
+
+     // moving = true;
+
+      blind.SetActive(true);
+
+      //before -1.86, -0.21, -0.6
+      //after  -1.53,  0.56, -0.6 
+      //diff    0.33,  0.77  
+
+
+      
+      for(int i=0; i< blindTime; i++){
+        //moveHyahaaa.gameObject.transform.Translate(0.01f/Bli, 0.03f/60.0f, 0.01f/60.0f);
+        blind.transform.Translate(new Vector3(0.33f, 0.77f, 0.0f) / blindTime);
+
+        yield return null;
+      }
+
+       yield return new WaitForSeconds(0.5f);
+
+      //Voice「ヒャッはあああああああああああああ！！！！！」
+
+      for(int i=0; i< blindTime; i++){
+        //moveHyahaaa.gameObject.transform.Translate(-0.01f/60.0f, -0.03f/60.0f, -0.01f/60.0f);
+        blind.transform.Translate(new Vector3(-0.33f, -0.77f, 0.0f) / blindTime);
+
+        yield return null;
+      }
+
+       movingRight = false;
+       blind.SetActive(false);
 
        yield return null;
     }
+
+
+
 }
