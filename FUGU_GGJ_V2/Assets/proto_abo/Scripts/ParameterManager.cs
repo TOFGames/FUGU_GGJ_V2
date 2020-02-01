@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
 
-namespace AboProto {
-    public class ParameterManager : MonoBehaviour {
+
+public class ParameterManager : MonoBehaviour {
         private float maxHp = 4;
 
         /// <summary>
@@ -36,6 +36,7 @@ namespace AboProto {
         //====================================================
         private void Awake () {
             hp = maxHp;
+
+            backgroundSpeed = 0.1f;//for Test
         }
-    }
 }

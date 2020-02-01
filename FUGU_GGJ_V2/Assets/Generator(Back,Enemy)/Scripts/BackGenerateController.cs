@@ -13,17 +13,20 @@ public class BackGenerateController : MonoBehaviour
     //public float TopZ;
     //pbulic float bottomZ;
 
-    [SerializeField]
+    /*[SerializeField]
     private float speed;
+*/
 
     public float startTime;
     public float generateTime;
 
     public GameObject[] prefabs; 
 
+    ParameterManager para;
    
     void Start()
     {
+        para = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
         InvokeRepeating ("GenerateObjects", startTime, generateTime);//forTest
     }
 
@@ -40,7 +43,7 @@ public class BackGenerateController : MonoBehaviour
          int i = Random.Range(0, prefabs.Length);
          GameObject obj=Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ), Quaternion.identity) as GameObject;
          //obj.transform.eulerAngles=new Vector3(0,180,0);
-         obj.GetComponent<FlowController>().speed = this.speed;
+         obj.GetComponent<BackFlowController>().speed = para.BackgroundSpeed;
          //Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ));
 
          //int i = Random.Range(0, prefabs.Length);

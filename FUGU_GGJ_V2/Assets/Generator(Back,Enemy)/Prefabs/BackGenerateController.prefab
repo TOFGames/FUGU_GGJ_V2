@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1356163354936380334}
-  - component: {fileID: 1356163354936380333}
+  - component: {fileID: 480169155568591823}
   m_Layer: 0
-  m_Name: GenerateController
+  m_Name: BackGenerateController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356163354936380333
+--- !u!114 &480169155568591823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,13 +40,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356163354936380332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30b290c82caf454fbc452b0bb2bf32e, type: 3}
+  m_Script: {fileID: 11500000, guid: ac1a7f6c2d75cfe47a55a685838eec99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftSize: -5
-  rightSize: 5
-  frontZ: -5
-  startTime: 1
-  generateTime: 1
-  prefabs:
-  - {fileID: 4402791746856991361, guid: 247eeab648113284c9bc6d4ef28155d7, type: 3}
+  leftX: 0
+  rightX: 0
+  frontZ: 0
+  speed: 0
+  startTime: 0
+  generateTime: 0
+  prefabs: []
