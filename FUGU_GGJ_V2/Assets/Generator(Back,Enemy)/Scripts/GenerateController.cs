@@ -26,16 +26,18 @@ public class GenerateController : MonoBehaviour
 
     public GameObject[] prefabs; 
 
+    ParameterManager para;
    
     void Start()
     {
+        para = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
         InvokeRepeating ("GenerateObjects", startTime, generateTime);//forTest
     }
 
 
     void FixedUpdate()
     {
-        
+        this.speed = para.BackgroundSpeed;
     }
 
     public void GenerateObjects(){
