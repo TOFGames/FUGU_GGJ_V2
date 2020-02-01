@@ -20,6 +20,11 @@ namespace AboProto {
         private bool isKnockBack;
 
         /// <summary>
+        /// 成敗判定
+        /// </summary>
+        private bool isDefeatToEnemy;
+
+        /// <summary>
         /// x軸方向のスピード
         /// </summary>
         private Vector3 xSpeed = new Vector3(0.1f,0,0);
@@ -60,7 +65,7 @@ namespace AboProto {
         private void OnTriggerEnter (Collider other) {
             if(other.gameObject.name.Equals("GenerateHyahaa(Clone)")) {
                 BeatEff();
-                GenerateNormalMan(other.transform.position);
+                if(!isDefeatToEnemy) StartCoroutine(GenerateNormalMan(other.transform.position));
 
                 Destroy(other.gameObject);
             }
@@ -231,11 +236,14 @@ namespace AboProto {
         /// <summary>
         /// 普通の人の生成
         /// </summary>
-        private GameObject GenerateNormalMan (Vector3 pos) {
+        private IEnumerator GenerateNormalMan (Vector3 pos) {
+            isDefeatToEnemy = true;
             GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
             obj.GetComponent<NormalMan>().IsRepair = true;
             obj.transform.position = pos;
-            return obj;
+            yield return new WaitForSeconds(0.1f);
+
+            isDefeatToEnemy = false;
         }
 
         //============================================================================
