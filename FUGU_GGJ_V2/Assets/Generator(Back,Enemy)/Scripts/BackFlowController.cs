@@ -11,17 +11,18 @@ public class BackFlowController : MonoBehaviour
 
     public float deletePosition;
 
+    ParameterManager para;
 
     void Start()
     {
         //speed = speed * Random.value; 
-     
+        para = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
     }
 
     
     void FixedUpdate()
     {
-        
+        this.speed = para.BackgroundSpeed;
         transform.Translate(0,0, -speed);
 
         if(transform.position.z <= deletePosition){
