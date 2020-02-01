@@ -252,6 +252,9 @@ public class Player : MonoBehaviour {
                 obj.GetComponent<Collider>().enabled = false;
                 obj.GetComponent<Man>().IsRepair = true;
                 obj.transform.position = pos;
+
+                parameterManager.Score += 5;
+                                
                 yield return new WaitForSeconds(0.1f);
 
                 isDefeatToEnemy = false;
@@ -266,6 +269,9 @@ public class Player : MonoBehaviour {
                 GameObject obj = Instantiate(Resources.Load("HyahhaMan")) as GameObject;
                 obj.GetComponent<Man>().IsRepair = true;
                 obj.transform.position = pos;
+
+                parameterManager.Score -= 5;
+
                 yield return new WaitForSeconds(0.1f);
 
                 isDefeatToEnemy = false;

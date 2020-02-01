@@ -52,24 +52,29 @@ public class GenerateController : MonoBehaviour
 
         //for manyPrefabs to random
 
-        /*
-
-        if(score < 30){//Enden World
-
-        }else if(30 <= socre && score < 50) {//MAD MAX
         
-        }else if(50 <= socre && score < 70){//Danger
-
-        }else if(70 <= socre && score < 85){//Safety
-
-        }else{//Peaceful
-
-        }
-
-        */
 
         float rand = Random.Range(0.0f, 1.0f);
         float border = 0.5f;
+        
+        int score = para.Score;
+
+        if(score < 30){//Enden World
+          border = 0.0f;
+        }else if(30 <= score && score < 50) {//MAD MAX
+          border = 0.3f;
+        }else if(50 <= score && score < 70){//Danger
+           border = 0.5f;
+        }else if(70 <= score && score < 85){//Safety
+           border = 0.7f;
+        }else{//Peaceful
+           border = 0.85f;
+
+        }
+
+        
+
+
         //border = score / 100; //0.3とかMaxわからないと何ともか?
 
 
@@ -77,7 +82,7 @@ public class GenerateController : MonoBehaviour
 
          int i;
 
-         if( rand <= border ){
+         if( rand >= border ){
              i = 0;//Hyahaaaa
          }else{
              i = 1;//NomalMan
@@ -86,14 +91,6 @@ public class GenerateController : MonoBehaviour
 
          GameObject obj=Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ), Quaternion.identity) as GameObject;
          obj.transform.eulerAngles=new Vector3(0,180,0);
-        // obj.GetComponent<FlowController>().speed = this.speed;
-         //Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ));
-
-         //int i = Random.Range(0, prefabs.Length);
-         //int pos_x = Random.Range(leftX, rightX);
-         //int pos_z = Random.Range(TopZ, bottomZ);
-         //Instantiate(prefabs[i], new Vector3(pos_x, this.transform.position.y, pos_Z), Quaternion.identity);
-
         
     }
 }
