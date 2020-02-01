@@ -58,6 +58,8 @@ namespace AboProto {
         private void OnTriggerEnter (Collider other) {
             if(other.gameObject.name.Equals("GenerateHyahaa(Clone)")) {
                 BeatEff();
+                GenerateNormalMan(other.transform.position);
+
                 Destroy(other.gameObject);
             }
         }
@@ -220,6 +222,19 @@ namespace AboProto {
         }
 
         //============================================================================
+        /// <summary>
+        /// 普通の人の生成
+        /// </summary>
+        private GameObject GenerateNormalMan (Vector3 pos) {
+            GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
+            obj.transform.position = pos;
+            return obj;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 打ち負かされたら
+        /// </summary>
         private IEnumerator Defeat (float rate) {
             isKnockBack = true;
             GameObject obj = transform.Find("Dummy").gameObject;
