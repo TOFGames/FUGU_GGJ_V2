@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
                 _particleSystem = transform.Find("Saturated").GetComponent<ParticleSystem>();
                 _canvas = GameObject.Find("Canvas").gameObject;
 
-                AudioManager.Instance.PlayBGM("aiwo",true);
+                AudioManager.Instance.PlayBGM("BGM1",true);
         }
 
         private void Update () {
@@ -170,6 +170,7 @@ public class Player : MonoBehaviour {
         /// 左にアクションをおこしたかどうか
         /// </summary>
         private bool IsLeft () {
+                if(Option.Option_swich==true) return false; //オプションボタンを押されたときに右に移動させない
                 if(Input.GetKey(KeyCode.LeftArrow)) {
                         return true;
                 }
@@ -187,7 +188,7 @@ public class Player : MonoBehaviour {
         /// 右にアクションをおこしたかどうか
         /// </summary>
         private bool IsRight () {
-                if(Option.swich==true) return false; //オプションボタンを押されたときに右に移動させない
+                if(Option.Option_swich==true) return false; //オプションボタンを押されたときに右に移動させない
                 if(Input.GetKey(KeyCode.RightArrow)) {
                         return true;
                 }
