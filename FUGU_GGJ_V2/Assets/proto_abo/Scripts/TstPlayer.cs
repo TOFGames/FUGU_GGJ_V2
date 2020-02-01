@@ -1,0 +1,188 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AboProto {
+    /// <summary>
+    /// テスト用プレイヤー
+    /// </summary>
+    public class TstPlayer : MonoBehaviour {
+        private Rigidbody _rigidbody;
+        private Animator _animator;
+        private ParticleSystem _particleSystem;
+        private GameObject _canvas;
+
+        private GameObject beatEff;
+
+        /// <summary>
+        /// x軸方向のスピード
+        /// </summary>
+        private Vector3 xSpeed = new Vector3(0.1f,0,0);
+
+        /// <summary>
+        /// y軸方向のスピード
+        /// </summary>
+        private Vector3 ySpeed = new Vector3(0,3f,0);
+
+        /// <summary>
+        /// 位置制限
+        /// </summary>
+        private Vector3 posLimit = new Vector3(4,0,0);
+
+        //============================================================================
+        private void Awake () {
+            _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+            _particleSystem = transform.Find("Saturated").GetComponent<ParticleSystem>();
+            _canvas = GameObject.Find("Canvas").gameObject;
+        }
+
+        private void Update () {
+            Move();
+        }
+
+        private void OnCollisionEnter (Collision collision) {
+            if(collision.gameObject.name.Equals("Plane")) {
+                _animator.SetBool("IsJump",false);
+            }
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 動く
+        /// </summary>
+        private void Move () {
+            if(IsLeft()) {
+                _rigidbody.position -= xSpeed;
+            }
+
+            if(IsRight()) {
+                _rigidbody.position += xSpeed;
+
+            }
+
+            if(IsUp()) {
+                if(!_animator.GetBool("IsJump")) {
+                    _rigidbody.position += ySpeed;
+                    _animator.SetBool("IsJump",true);
+                }
+            }
+
+            if(Input.GetKey(KeyCode.Space)) {
+                SpeedUpState();
+            } else {
+                NormalState();
+            }
+
+            if(Input.GetKeyDown(KeyCode.A)) {
+                BeatEff();
+            }
+
+            if(_rigidbody.position.x <= -posLimit.x) {
+                Vector3 attachPos = _rigidbody.position;
+                attachPos.x = -posLimit.x;
+                _rigidbody.position = attachPos;
+            }
+
+            if(_rigidbody.position.x >= posLimit.x) {
+                Vector3 attachPos = _rigidbody.position;
+                attachPos.x = posLimit.x;
+                _rigidbody.position = attachPos;
+            }
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 通常時の状態
+        /// </summary>
+        private void NormalState () {
+            _animator.SetFloat("AnimSpeed",1);
+            _particleSystem.startSpeed = 5;
+            _particleSystem.startLifetime = 5;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// スピードアップ時の状態
+        /// </summary>
+        private void SpeedUpState () {
+            _animator.SetFloat("AnimSpeed",3);
+            _particleSystem.startSpeed = 10;
+            _particleSystem.startLifetime = 0.5f;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 左にアクションをおこしたかどうか
+        /// </summary>
+        private bool IsLeft () {
+            if(Input.GetKey(KeyCode.LeftArrow)) {
+                return true;
+            }
+
+            if(InputUtil.GetTouchCanvasPosition(_canvas).x < 0 &&
+                (InputUtil.GetTouch() == InputUtil.TouchInfo.Began || InputUtil.GetTouch() == InputUtil.TouchInfo.Moved)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 右にアクションをおこしたかどうか
+        /// </summary>
+        private bool IsRight () {
+            if(Input.GetKey(KeyCode.RightArrow)) {
+                return true;
+            }
+
+            if(InputUtil.GetTouchCanvasPosition(_canvas).x > 0 &&
+                (InputUtil.GetTouch() == InputUtil.TouchInfo.Began || InputUtil.GetTouch() == InputUtil.TouchInfo.Moved)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 左にアクションをおこしたかどうか
+        /// </summary>
+        private bool IsUp () {
+            if(Input.GetKey(KeyCode.UpArrow)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        //============================================================================
+        /// <summary>
+        /// 撃退エフェクトの生成
+        /// </summary>
+        private GameObject GenerateBeatEff () {
+            GameObject obj = Instantiate(Resources.Load("BeatEff")) as GameObject;
+            obj.transform.SetParent(GameObject.Find("Canvas").transform,false);
+            return obj;
+        }
+
+        /// <summary>
+        /// 撃退エフェクトの発動
+        /// </summary>
+        private void BeatEff () {
+            if(beatEff) {
+                ActivateBeatEff();
+            } else {
+                beatEff = GenerateBeatEff();
+            }
+        }
+
+        /// <summary>
+        /// 撃退エフェクトのアクティベート
+        /// </summary>
+        private void ActivateBeatEff () {
+            beatEff.SetActive(true);
+        }
+    }
+}
