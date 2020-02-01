@@ -12,7 +12,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         private List<AudioSource> bgmSourceList = new List<AudioSource>();
         private List<AudioSource> seSourceList = new List<AudioSource>();
 
-        private Dictionary<string,AudioClip> bgmDic = new Dictionary<string,AudioClip>();
+        private Dictionary<string,AudioClip> bgmDic = new Dictionary<string,AudioClip>();//名前取得
         private Dictionary<string,AudioClip> seDic = new Dictionary<string,AudioClip>();
 
         public Dictionary<string,float> bgmBPM = new Dictionary<string,float>();
@@ -38,11 +38,11 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
                         }
                 }
 
-                object[] bgmData = Resources.LoadAll("Audio/BGM");
+                object[] bgmData = Resources.LoadAll("Audio/BGM");//データ抽出
                 object[] seData = Resources.LoadAll("Audio/SE");
 
                 foreach(AudioClip bgm in bgmData) {
-                        bgmDic[bgm.name] = bgm;
+                        bgmDic[bgm.name] = bgm;//名前抽出
                         bgmBPM[bgm.name] = AddBPM();
                 }
 
