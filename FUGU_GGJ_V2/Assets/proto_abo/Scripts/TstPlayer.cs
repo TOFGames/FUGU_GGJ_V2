@@ -50,7 +50,9 @@ namespace AboProto {
         }
 
         private void OnCollisionEnter (Collision collision) {
-            if(collision.gameObject.name.Equals("Plane") || collision.gameObject.name.Equals("RoadMovingPlane(Clone)")) {
+            if(collision.gameObject.name.Equals("Plane") ||
+                collision.gameObject.name.Equals("RoadMovingPlane") ||
+                collision.gameObject.name.Equals("RoadMovingPlane(Clone)")) {
                 _animator.SetBool("IsJump",false);
             }
         }
@@ -231,6 +233,7 @@ namespace AboProto {
         /// </summary>
         private GameObject GenerateNormalMan (Vector3 pos) {
             GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
+            obj.GetComponent<NormalMan>().IsRepair = true;
             obj.transform.position = pos;
             return obj;
         }

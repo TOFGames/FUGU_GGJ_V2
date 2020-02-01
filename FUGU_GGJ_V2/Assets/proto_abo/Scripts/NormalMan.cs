@@ -7,6 +7,8 @@ public class NormalMan : MonoBehaviour {
     private float speed = 0.05f;
     private float angle = 0;
 
+    public bool IsRepair;
+
     //=============================================================
     private void Init () {
     }
@@ -16,13 +18,15 @@ public class NormalMan : MonoBehaviour {
     }
 
     private void Start () {
-        StartCoroutine(Walk());
+        if(IsRepair) {
+            StartCoroutine(Walk());
+        }
     }
 
     private void Update () {
 
     }
-    
+
     private IEnumerator Walk () {
         angle = Random.Range(90,270);
         while(true) {
