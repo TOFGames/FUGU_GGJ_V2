@@ -28,7 +28,7 @@ public class NormalMan : MonoBehaviour {
     }
 
     private IEnumerator Walk () {
-        angle = Random.Range(90,270);
+        angle = Random.Range(90+15,270-15);
         while(true) {
             transform.position += new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle - 90)),0,-Mathf.Sin(Mathf.Deg2Rad * (angle - 90))) * speed;
             transform.eulerAngles = new Vector3(0,angle,0);
