@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateController : MonoBehaviour
+public class BackGenerateController : MonoBehaviour
 {
 
     //To generrate something.
@@ -15,11 +15,6 @@ public class GenerateController : MonoBehaviour
 
     [SerializeField]
     private float speed;
-
-    public float Speed{
-        get { return speed; }
-        set { speed = value;}
-    }
 
     public float startTime;
     public float generateTime;
@@ -44,8 +39,8 @@ public class GenerateController : MonoBehaviour
         //for manyPrefabs to random
          int i = Random.Range(0, prefabs.Length);
          GameObject obj=Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ), Quaternion.identity) as GameObject;
-         obj.transform.eulerAngles=new Vector3(0,180,0);
-        // obj.GetComponent<FlowController>().speed = this.speed;
+         //obj.transform.eulerAngles=new Vector3(0,180,0);
+         obj.GetComponent<FlowController>().speed = this.speed;
          //Instantiate(prefabs[i], new Vector3(Random.Range(leftX, rightX), this.transform.position.y, frontZ));
 
          //int i = Random.Range(0, prefabs.Length);
