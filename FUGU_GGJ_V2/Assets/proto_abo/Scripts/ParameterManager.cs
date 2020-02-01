@@ -20,6 +20,19 @@ namespace AboProto {
             set { hp = value; }
         }
 
+        /// <summary>
+        /// 速度(背景や敵の)
+        /// </summary>
+        private float backgroundSpeed;
+
+        /// <summary>
+        /// 速度(プロパティ)
+        /// </summary>
+        public float BackgroundSpeed {
+            get { return backgroundSpeed; }
+            set { backgroundSpeed = value; }
+        }
+
         //====================================================
         private void Awake () {
             hp = maxHp;
