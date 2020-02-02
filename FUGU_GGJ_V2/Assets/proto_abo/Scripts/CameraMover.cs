@@ -14,6 +14,8 @@ namespace AboProto {
         [SerializeField]
         private GameObject attention; //注目オブジェクト
 
+        private GameObject attentionBoss; //注目オブジェクト(boss)
+
         private Camera cam; //カメラ
         private GameManager gameManager;
 
@@ -26,6 +28,7 @@ namespace AboProto {
         private void CRef () {
             cam = this.GetComponent<Camera>();
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            attentionBoss = Resources.Load("Prefabs/BigHyahhaMan") as GameObject;
         }
 
         //=============================================================
@@ -34,7 +37,7 @@ namespace AboProto {
         }
 
         private void Update () {
-            if(gameManager.StartedGame) {
+            if(gameManager.StartedGame && !gameManager.EndedGame) {
                 if(attention == null) return;
 
                 var goal = attention.transform.position + fixX + fixY + fixZ;
@@ -42,8 +45,18 @@ namespace AboProto {
 
                 var goalRotate = Vector3.zero;
                 transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,goalRotate,easingSpeed);
-            } else {
-                transform.SetParent(gameManager.transform);
+                return;
+            }
+
+            if(gameManager.EndedGame) {
+                if(attentionBoss == null) return;
+
+                var goal = attentionBoss.transform.position + fixX + fixY + fixZ;
+                transform.position = Vector3.Lerp(transform.position,goal,easingSpeed);
+
+                var goalRotate = Vector3.zero;
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,goalRotate,easingSpeed);
+                return;
             }
         }
     }

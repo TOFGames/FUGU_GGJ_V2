@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
         set { endedEndingPerform = value; }
     }
 
+    private bool onceGenerateBigHyahhaMan;
+
     //=============================================================
     private void Init () {
     }
@@ -41,6 +43,20 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update () {
+        if(!onceGenerateBigHyahhaMan && EndedGame) {
+            onceGenerateBigHyahhaMan = true;
 
+            StartCoroutine(GenerateBigHyahhaMan(GameObject.Find("Player").transform.position + new Vector3(0,10,2)));
+        }
+    }
+
+    //============================================================================
+    /// <summary>
+    /// でかすぎるヒャッハーな人の生成
+    /// </summary>
+    private IEnumerator GenerateBigHyahhaMan (Vector3 pos) {
+        GameObject obj = Instantiate(Resources.Load("Big_HyahhaMan")) as GameObject;
+        obj.transform.position = pos;
+        yield return new WaitForSeconds(0.1f);
     }
 }
