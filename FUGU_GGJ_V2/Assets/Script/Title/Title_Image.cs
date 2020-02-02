@@ -8,7 +8,7 @@ public class Title_Image : MonoBehaviour
         private float canvas_sizeX;//上下の大きさ取得
         private float canvas_sizeY;
         float title_color=0.0f;//タイトルを黒くする
-        float title_clear=0.0f;//タイトルを透明化
+        public float title_clear=0.0f;//タイトルを透明化
         public static bool Blackout=false;
         void Start()
         {
@@ -16,6 +16,8 @@ public class Title_Image : MonoBehaviour
                 canvas_sizeX=Screen.width;
                 canvas_sizeY=Screen.height;
                 this.transform.localScale = new Vector3(0, 0, 1);
+                title_clear=0.0f;
+                Blackout=false;
         }
 
         void Update()
@@ -23,9 +25,11 @@ public class Title_Image : MonoBehaviour
                 if(title_clear<1&&Blackout==true) {
                         this.transform.localScale = new Vector3(canvas_sizeX, canvas_sizeY, 1);
                         title_clear+=0.01f;
-                        Blackout=true;
+                        //Blackout=true;
                 }
                 image_component.color=new Color(title_color,title_color,title_color,title_clear);
-                if(title_clear>1) SceneManagement.SceneSwich=1;
+                if(title_clear>1) {
+                        SceneManagement.SceneSwich=1;
+                }
         }
 }
