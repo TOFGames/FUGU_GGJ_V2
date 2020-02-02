@@ -10,7 +10,7 @@ public class HowPlay_image : MonoBehaviour
         {
                 canvas_sizeX=Screen.width;
                 canvas_sizeY=Screen.height;
-                this.transform.localScale = new Vector3(canvas_sizeX, canvas_sizeY, 1);
+                //this.transform.localScale = new Vector3(canvas_sizeX, canvas_sizeY, 1);
         }
         public void Click(){
                 this.gameObject.SetActive (false);
