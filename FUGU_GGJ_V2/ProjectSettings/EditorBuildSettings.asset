@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/proto_abo/mainCopy_shishido.unity
-    guid: e4c6876f83b387644bd5edc54f26f49b
+    path: Assets/Scenes/Title.unity
+    guid: f14120545a0993d43874bc9f32dd5e9e
   - enabled: 1
     path: Assets/naichilab/unity-simple-ranking/Scenes/Ranking.unity
     guid: 152244f5855414ac4a3874f14efa583c
@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainSCene.unity
     guid: c24eb49c045311949b6c4e4ceb35607a
   - enabled: 1
-    path: Assets/Scenes/Title.unity
-    guid: f14120545a0993d43874bc9f32dd5e9e
+    path: Assets/proto_abo/mainCopy_shishido.unity
+    guid: e4c6876f83b387644bd5edc54f26f49b
   - enabled: 1
     path: Assets/Scenes/AbosWork.unity
     guid: cb35cfec13a2f584fa9abe2678151825
