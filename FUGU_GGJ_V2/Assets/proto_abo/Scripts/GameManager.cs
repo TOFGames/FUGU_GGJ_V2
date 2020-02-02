@@ -34,10 +34,22 @@ public class GameManager : MonoBehaviour {
         set { endedEndingPerform2 = value; }
     }
 
+    private bool endedEndingPerform3;
+    public bool EndedEndingPerform3 {
+        get { return endedEndingPerform3; }
+        set { endedEndingPerform3 = value; }
+    }
+
     private bool onceGenerateBigHyahhaMan;
+
+    private GameObject boss;
+    private ParameterManager parameterManager;
+
+    private float localTime = 0;
 
     //=============================================================
     private void Init () {
+        parameterManager = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
     }
 
     private void Awake () {
@@ -55,9 +67,16 @@ public class GameManager : MonoBehaviour {
             StartCoroutine(GenerateBigHyahhaMan(GameObject.Find("Player").transform.position + new Vector3(0,10,5)));
         }
 
-        if(EndedEndingPerform) {
+        if(EndedEndingPerform && !EndedEndingPerform2) {
             if(Input.GetKeyDown(KeyCode.Space)) {
-                AboProto.AudioManager.Instance.PlaySE("slash");
+                //AboProto.AudioManager.Instance.PlaySE("slash");
+                GenerateExplosion(boss.transform.position + Vector3.one * Random.Range(0,10));
+            }
+
+            localTime += Time.deltaTime;
+            if(localTime >= 10) {
+                parameterManager.Score += 10;
+                EndedEndingPerform2 = true;
             }
         }
     }
@@ -70,17 +89,26 @@ public class GameManager : MonoBehaviour {
         GameObject obj = Instantiate(Resources.Load("Big_HyahhaMan")) as GameObject;
         obj.transform.position = pos;
 
+        boss = obj;
+
         yield return new WaitForSeconds(1.5f);
 
-        AboProto.AudioManager.Instance.PlaySE("explosion");
-        obj = Instantiate(Resources.Load("BossExplosion")) as GameObject;
-        Vector3 v = pos + new Vector3(0,0,0.2f);
-        obj.transform.position = new Vector3(v.x,1,v.z);
+        GenerateExplosion(pos);
 
         yield return new WaitForSeconds(1f);
         EndedEndingPerform = true;
 
         GenerateDescription();
+    }
+
+    /// <summary>
+    /// 爆発の生成
+    /// </summary>
+    private void GenerateExplosion (Vector3 pos) {
+        AboProto.AudioManager.Instance.PlaySE("explosion");
+        GameObject obj = Instantiate(Resources.Load("BossExplosion")) as GameObject;
+        Vector3 v = pos + new Vector3(0,0,0.2f);
+        obj.transform.position = new Vector3(v.x,1,v.z);
     }
 
     /// <summary>

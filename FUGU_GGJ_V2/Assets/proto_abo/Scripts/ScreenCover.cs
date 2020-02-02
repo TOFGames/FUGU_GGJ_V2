@@ -12,7 +12,8 @@ public class ScreenCover : MonoBehaviour {
     private Vector2[] upPos = new Vector2[2];
     private Vector2[] downPos = new Vector2[2];
 
-    private bool onceReCycleCover;
+    private bool onceReCycleCover1;
+    private bool onceReCycleCover2;
 
     //=============================================================
     private void Init () {
@@ -35,9 +36,16 @@ public class ScreenCover : MonoBehaviour {
 
     private void Update () {
         if(gameManager.EndedGame) {
-            if(!onceReCycleCover) {
+            if(!onceReCycleCover1) {
                 StartCoroutine(Move(3));
-                onceReCycleCover = true;
+                onceReCycleCover1 = true;
+            }
+        }
+
+        if(gameManager.EndedEndingPerform2) {
+            if(!onceReCycleCover2) {
+                StartCoroutine(Move(3));
+                onceReCycleCover2 = true;
             }
         }
     }
@@ -58,7 +66,8 @@ public class ScreenCover : MonoBehaviour {
         }
 
         yield return new WaitWhile(() => !gameManager.StartedGame);
-        if(gameManager.EndedGame) yield return new WaitWhile(() => !gameManager.EndedEndingPerform2);
+        if(gameManager.EndedGame) yield return new WaitWhile(() => !gameManager.EndedEndingPerform);
+        if(gameManager.EndedEndingPerform2) yield return new WaitWhile(() => !gameManager.EndedEndingPerform3);
 
         while(true) {
             down.anchoredPosition = Vector3.Lerp(upPos[0],upPos[1],time);
