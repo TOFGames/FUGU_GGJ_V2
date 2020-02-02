@@ -272,6 +272,7 @@ namespace AboProto {
         /// ヒャッハーな人の生成
         /// </summary>
         private IEnumerator GenerateHyahhaMan (Vector3 pos) {
+            AboProto.AudioManager.Instance.PlaySE("iyahaaaa");
             isDefeatToEnemy = true;
             GameObject obj = Instantiate(Resources.Load("HyahhaMan")) as GameObject;
             obj.GetComponent<Man>().IsRepair = true;
