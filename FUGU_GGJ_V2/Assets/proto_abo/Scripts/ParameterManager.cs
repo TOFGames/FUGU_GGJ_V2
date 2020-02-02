@@ -55,5 +55,6 @@ public class ParameterManager : MonoBehaviour {
             backgroundSpeed = 0.1f;//for Test
 
             score = 0;
+            //score = 100;//for Test
         }
 }

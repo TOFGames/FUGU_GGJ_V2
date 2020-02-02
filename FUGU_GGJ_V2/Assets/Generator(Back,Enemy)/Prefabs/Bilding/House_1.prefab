@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5323688271567687921}
   - component: {fileID: 5323688271558115089}
+  - component: {fileID: 114067439448066826}
   m_Layer: 0
   m_Name: House_1
   m_TagString: Untagged
@@ -24,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323688271567588561}
-  m_LocalRotation: {x: -0, y: 0.9992324, z: -0, w: -0.03917457}
+  m_LocalRotation: {x: 0, y: 0.9992325, z: -0, w: -0.039172582}
   m_LocalPosition: {x: 13.23, y: 0, z: 5.22}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 5323688271567687923}
   - {fileID: 5323688271567687925}
@@ -53,6 +54,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114067439448066826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323688271567588561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7070a00e70c18b498644c5bb63f5d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  deletePosition: -10
 --- !u!1 &5323688271567588563
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323688271567588563}
   m_LocalRotation: {x: 0.000000021855694, y: 0.00000017484555, z: -3.821371e-15, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5323688271567687921}
