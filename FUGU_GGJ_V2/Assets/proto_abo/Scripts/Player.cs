@@ -60,7 +60,10 @@ namespace AboProto {
         private void OnCollisionEnter (Collision collision) {
             if(collision.gameObject.name.Equals("Plane") ||
                collision.gameObject.name.Equals("RoadMovingPlane") ||
-               collision.gameObject.name.Equals("RoadMovingPlane(Clone)")) {
+               collision.gameObject.name.Equals("RoadMovingPlane(Clone)")||
+               collision.gameObject.name.Equals("RoadMovingPlane (1)")||
+               collision.gameObject.name.Equals("RoadMovingPlane (2)")||
+               collision.gameObject.name.Equals("FloringRoad(Clone)")) {
                 _animator.SetBool("IsJump",false);
             }
         }
