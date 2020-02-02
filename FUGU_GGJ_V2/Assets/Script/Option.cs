@@ -7,14 +7,22 @@ public class Option : MonoBehaviour
 {
         public GameObject Slider;
         public static bool Option_swich=false;
+        private Vector2 this_position;
+        Vector2 mouseposition;
+        void Start(){
+                this_position=this.transform.position;
+        }
+
         void Update()
         {
-                if(EventSystem.current.IsPointerOverGameObject()) {
-                        Option_swich=true;  //ボタンにマウスを合わせるとtrueになる
+                mouseposition=Input.mousePosition;
+                float distance = Vector2.Distance(mouseposition, this_position);
+                if(EventSystem.current.IsPointerOverGameObject()&&distance<30) {
+                        Option_swich=true;//ボタンにマウスを合わせるとtrueになる
                 }else{
                         Option_swich=false;
                 }
-                Debug.Log(Option_swich);
+                //Debug.Log(distance);
         }
 
         public void OnClick()
