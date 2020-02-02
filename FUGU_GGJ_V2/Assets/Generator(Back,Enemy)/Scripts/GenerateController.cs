@@ -69,7 +69,6 @@ public class GenerateController : MonoBehaviour
            border = 0.7f;
         }else{//Peaceful
            border = 0.85f;
-
         }
 
         

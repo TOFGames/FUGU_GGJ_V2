@@ -254,7 +254,7 @@ public class Player : MonoBehaviour {
                 obj.transform.position = pos;
 
                 parameterManager.Score += 5;
-                                
+
                 yield return new WaitForSeconds(0.1f);
 
                 isDefeatToEnemy = false;
