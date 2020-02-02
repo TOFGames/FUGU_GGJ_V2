@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private bool onceGenerateBigHyahhaMan;
+    private bool onceCallRanking;
 
     private GameObject boss;
     private ParameterManager parameterManager;
@@ -78,6 +79,11 @@ public class GameManager : MonoBehaviour {
                 parameterManager.Score += 10;
                 EndedEndingPerform2 = true;
             }
+        }
+
+        if(EndedEndingPerform3 && !onceCallRanking) {
+            onceCallRanking = true;
+            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(parameterManager.Score);
         }
     }
 
