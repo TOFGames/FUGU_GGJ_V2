@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour {
         set { endedEndingPerform = value; }
     }
 
+    private bool endedEndingPerform2;
+    public bool EndedEndingPerform2 {
+        get { return endedEndingPerform2; }
+        set { endedEndingPerform2 = value; }
+    }
+
     private bool onceGenerateBigHyahhaMan;
 
     //=============================================================
@@ -48,6 +54,12 @@ public class GameManager : MonoBehaviour {
 
             StartCoroutine(GenerateBigHyahhaMan(GameObject.Find("Player").transform.position + new Vector3(0,10,5)));
         }
+
+        if(EndedEndingPerform) {
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                AboProto.AudioManager.Instance.PlaySE("slash");
+            }
+        }
     }
 
     //============================================================================
@@ -58,6 +70,24 @@ public class GameManager : MonoBehaviour {
         GameObject obj = Instantiate(Resources.Load("Big_HyahhaMan")) as GameObject;
         obj.transform.position = pos;
 
-        yield return null;
+        yield return new WaitForSeconds(1.5f);
+
+        AboProto.AudioManager.Instance.PlaySE("explosion");
+        obj = Instantiate(Resources.Load("BossExplosion")) as GameObject;
+        Vector3 v = pos + new Vector3(0,0,0.2f);
+        obj.transform.position = new Vector3(v.x,1,v.z);
+
+        yield return new WaitForSeconds(1f);
+        EndedEndingPerform = true;
+
+        GenerateDescription();
+    }
+
+    /// <summary>
+    /// 説明画像2(rushspace)の生成
+    /// </summary>
+    private void GenerateDescription () {
+        GameObject obj = Instantiate(Resources.Load("Description2")) as GameObject;
+        obj.transform.SetParent(GameObject.Find("Canvas").transform,false);
     }
 }
