@@ -92,6 +92,8 @@ public class ParameterManager : MonoBehaviour {
                     gameManager.EndedGame = true;
                 }
             }
+            score = 0;
+            //score = 100;//for Test
         }
     }
 }
