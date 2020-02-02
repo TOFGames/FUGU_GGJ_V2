@@ -58,7 +58,7 @@ public class ScreenCover : MonoBehaviour {
         }
 
         yield return new WaitWhile(() => !gameManager.StartedGame);
-        if(gameManager.EndedGame) yield return new WaitWhile(() => !gameManager.EndedEndingPerform);
+        if(gameManager.EndedGame) yield return new WaitWhile(() => !gameManager.EndedEndingPerform2);
 
         while(true) {
             down.anchoredPosition = Vector3.Lerp(upPos[0],upPos[1],time);
