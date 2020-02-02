@@ -7,7 +7,7 @@ public class SceneManagement : MonoBehaviour
         public static int SceneSwich=0;
         void Start()
         {
-
+                SceneSwich=0;
         }
 
         void Update()
@@ -18,7 +18,6 @@ public class SceneManagement : MonoBehaviour
         }
         void SceneSW(int swich){
                 if(swich==1) {
-                        swich=0;
                         SceneManager.LoadScene ("AbosWork");
                 }
         }
