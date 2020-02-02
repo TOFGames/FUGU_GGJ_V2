@@ -15,6 +15,7 @@ namespace AboProto {
         private GameObject attention; //注目オブジェクト
 
         private Camera cam; //カメラ
+        private GameManager gameManager;
 
         //=============================================================
         private void Init () {
@@ -24,6 +25,7 @@ namespace AboProto {
         //=============================================================
         private void CRef () {
             cam = this.GetComponent<Camera>();
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
         //=============================================================
@@ -32,9 +34,17 @@ namespace AboProto {
         }
 
         private void Update () {
-            if(attention == null) return;
-            var goal = attention.transform.position + fixX + fixY + fixZ;
-            transform.position = Vector3.Lerp(transform.position,goal,easingSpeed);
+            if(gameManager.StartedGame) {
+                if(attention == null) return;
+
+                var goal = attention.transform.position + fixX + fixY + fixZ;
+                transform.position = Vector3.Lerp(transform.position,goal,easingSpeed);
+
+                var goalRotate = Vector3.zero;
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,goalRotate,easingSpeed);
+            } else {
+                transform.SetParent(gameManager.transform);
+            }
         }
     }
 }

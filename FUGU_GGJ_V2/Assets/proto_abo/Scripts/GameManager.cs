@@ -4,22 +4,43 @@ using UnityEngine;
 //using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-	//=============================================================
-	
+    /// <summary>
+    /// ゲームが始まった判定
+    /// </summary>
+    private bool startedGame;
+    public bool StartedGame {
+        get { return startedGame; }
+        set { startedGame = value; }
+    }
 
-	//=============================================================
-	private void Init(){
-	}
+    /// <summary>
+    /// ゲームが終わった判定
+    /// </summary>
+    private bool endedGame;
+    public bool EndedGame {
+        get { return endedGame; }
+        set { endedGame = value; }
+    }
 
-	private void Awake () {
-		Init();
-	}
+    private bool endedEndingPerform;
+    public bool EndedEndingPerform {
+        get { return endedEndingPerform; }
+        set { endedEndingPerform = value; }
+    }
 
-	private void Start () {
-		
-	}
-	
-	private void Update () {
-		
-	}
+    //=============================================================
+    private void Init () {
+    }
+
+    private void Awake () {
+        Init();
+    }
+
+    private void Start () {
+
+    }
+
+    private void Update () {
+
+    }
 }
