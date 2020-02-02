@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
         if(!onceGenerateBigHyahhaMan && EndedGame) {
             onceGenerateBigHyahhaMan = true;
 
-            StartCoroutine(GenerateBigHyahhaMan(GameObject.Find("Player").transform.position + new Vector3(0,10,2)));
+            StartCoroutine(GenerateBigHyahhaMan(GameObject.Find("Player").transform.position + new Vector3(0,10,5)));
         }
     }
 
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator GenerateBigHyahhaMan (Vector3 pos) {
         GameObject obj = Instantiate(Resources.Load("Big_HyahhaMan")) as GameObject;
         obj.transform.position = pos;
-        yield return new WaitForSeconds(0.1f);
+
+        yield return null;
     }
 }

@@ -52,7 +52,7 @@ public class ParameterManager : MonoBehaviour {
     /// <summary>
     /// ゲームの時間
     /// </summary>
-    private float gameTime = 3;
+    private float gameTime = 1;
 
     /// <summary>
     /// ゲームの時間(プロパティ)
