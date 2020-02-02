@@ -11,6 +11,10 @@ namespace AboProto {
         private Vector3 fixY = Vector3.up * 2f; //y軸補正(カメラを少し上にするため)
         private Vector3 fixZ = Vector3.back * 5f; //z軸補正(描画されなくなるため)
 
+        private Vector3 fixXB = Vector3.right * 0; //x軸補正
+        private Vector3 fixYB = Vector3.up * (-5); //y軸補正(カメラを少し上にするため)
+        private Vector3 fixZB = Vector3.back * 5f; //z軸補正(描画されなくなるため)
+
         [SerializeField]
         private GameObject attention; //注目オブジェクト
 
@@ -28,7 +32,7 @@ namespace AboProto {
         private void CRef () {
             cam = this.GetComponent<Camera>();
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-            attentionBoss = Resources.Load("Prefabs/BigHyahhaMan") as GameObject;
+            attentionBoss = Resources.Load("Big_HyahhaMan") as GameObject;
         }
 
         //=============================================================
@@ -51,11 +55,10 @@ namespace AboProto {
             if(gameManager.EndedGame) {
                 if(attentionBoss == null) return;
 
-                var goal = attentionBoss.transform.position + fixX + fixY + fixZ;
+                var goal = attentionBoss.transform.position + fixXB + fixYB + fixZB;
                 transform.position = Vector3.Lerp(transform.position,goal,easingSpeed);
 
-                var goalRotate = Vector3.zero;
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,goalRotate,easingSpeed);
+                transform.LookAt(attentionBoss.transform,Vector3.up);
                 return;
             }
         }
