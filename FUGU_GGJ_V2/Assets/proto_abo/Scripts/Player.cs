@@ -253,6 +253,7 @@ namespace AboProto {
         /// 普通の人の生成
         /// </summary>
         private IEnumerator GenerateNormalMan (Vector3 pos) {
+<<<<<<< HEAD
             isDefeatToEnemy = true;
             GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
             obj.GetComponent<Collider>().enabled = false;
@@ -261,6 +262,19 @@ namespace AboProto {
             yield return new WaitForSeconds(0.1f);
 
             isDefeatToEnemy = false;
+=======
+                isDefeatToEnemy = true;
+                GameObject obj = Instantiate(Resources.Load("NormalMan")) as GameObject;
+                obj.GetComponent<Collider>().enabled = false;
+                obj.GetComponent<Man>().IsRepair = true;
+                obj.transform.position = pos;
+
+                parameterManager.Score += 5;
+
+                yield return new WaitForSeconds(0.1f);
+
+                isDefeatToEnemy = false;
+>>>>>>> 5339c2cfc70bc4d6e9b4084e94b69d3731ebbaa8
         }
 
         //============================================================================
@@ -268,11 +282,22 @@ namespace AboProto {
         /// ヒャッハーな人の生成
         /// </summary>
         private IEnumerator GenerateHyahhaMan (Vector3 pos) {
+<<<<<<< HEAD
             isDefeatToEnemy = true;
             GameObject obj = Instantiate(Resources.Load("HyahhaMan")) as GameObject;
             obj.GetComponent<Man>().IsRepair = true;
             obj.transform.position = pos;
             yield return new WaitForSeconds(0.1f);
+=======
+                isDefeatToEnemy = true;
+                GameObject obj = Instantiate(Resources.Load("HyahhaMan")) as GameObject;
+                obj.GetComponent<Man>().IsRepair = true;
+                obj.transform.position = pos;
+
+                parameterManager.Score -= 5;
+
+                yield return new WaitForSeconds(0.1f);
+>>>>>>> 5339c2cfc70bc4d6e9b4084e94b69d3731ebbaa8
 
             isDefeatToEnemy = false;
         }

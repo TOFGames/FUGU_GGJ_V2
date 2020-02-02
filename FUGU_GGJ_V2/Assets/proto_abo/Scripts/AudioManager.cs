@@ -79,7 +79,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
                 if(!seDic.ContainsKey(name)) {
                         return;
                 }
-
                 foreach(AudioSource se in seSourceList) {
                         se.PlayOneShot(seDic[name] as AudioClip);
                         return;
