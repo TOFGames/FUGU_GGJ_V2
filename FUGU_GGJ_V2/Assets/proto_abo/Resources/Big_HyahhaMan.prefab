@@ -936,8 +936,8 @@ GameObject:
   - component: {fileID: 8308807448647979275}
   - component: {fileID: 8308807448641060599}
   - component: {fileID: 4665039774595340345}
-  - component: {fileID: 1053248410898648420}
   - component: {fileID: 54775916013423872}
+  - component: {fileID: 114513648172550350}
   m_Layer: 0
   m_Name: Big_HyahhaMan
   m_TagString: Untagged
@@ -971,7 +971,7 @@ Animator:
   m_GameObject: {fileID: 8308807448648469803}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0372829a6cdcf4048864aefb5257a6d9, type: 3}
-  m_Controller: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
+  m_Controller: {fileID: 9100000, guid: b685c37357fd51347943d79847b19701, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -994,19 +994,6 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.88, z: 0}
---- !u!114 &1053248410898648420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8308807448648469803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f35c5b6e877cd4098c0d457e966282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsRepair: 0
 --- !u!54 &54775916013423872
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1023,6 +1010,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114513648172550350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308807448648469803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad4766b4be93d94b8325fc69940de2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8308807448648469805
 GameObject:
   m_ObjectHideFlags: 0

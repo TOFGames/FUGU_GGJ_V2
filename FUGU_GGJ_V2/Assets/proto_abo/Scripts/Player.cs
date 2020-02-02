@@ -232,7 +232,7 @@ namespace AboProto {
         /// <summary>
         /// 撃退エフェクトの発動
         /// </summary>
-        private void BeatEff () {
+        public void BeatEff () {
             if(beatEff) {
                 ActivateBeatEff();
             } else {
