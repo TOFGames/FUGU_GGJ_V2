@@ -32,6 +32,7 @@ public class BigHyahhaMan : MonoBehaviour {
 
         GameObject.Find("Player").GetComponent<AboProto.Player>().BeatEff();
 
+        gameManager.EndedEndingPerform3 = true;
         Destroy(gameObject);
     }
 }
