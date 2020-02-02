@@ -56,7 +56,7 @@ public class BlindController : MonoBehaviour
         }
 
         public IEnumerator GoBlindLeft(GameObject blind){
-
+                AboProto.AudioManager.Instance.PlaySE("hyaaa");
                 // moving = true;
 
                 blind.SetActive(true);
@@ -77,7 +77,7 @@ public class BlindController : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
 
                 //Voice「ヒャッはあああああああああああああ！！！！！」
-                AboProto.AudioManager.Instance.PlaySE("hyaaa");
+
 
                 for(int i=0; i< blindTime; i++) {
                         //moveHyahaaa.gameObject.transform.Translate(-0.01f/60.0f, -0.03f/60.0f, -0.01f/60.0f);
@@ -94,7 +94,7 @@ public class BlindController : MonoBehaviour
 
 
         public IEnumerator GoBlindRight(GameObject blind){
-
+                AboProto.AudioManager.Instance.PlaySE("hyaaa");
                 // moving = true;
 
                 blind.SetActive(true);
@@ -113,7 +113,7 @@ public class BlindController : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
 
                 //Voice「ヒャッはあああああああああああああ！！！！！」
-                AboProto.AudioManager.Instance.PlaySE("hyaaa");
+
 
                 for(int i=0; i< blindTime; i++) {
                         //moveHyahaaa.gameObject.transform.Translate(-0.01f/60.0f, -0.03f/60.0f, -0.01f/60.0f);
