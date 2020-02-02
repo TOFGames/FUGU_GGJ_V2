@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimeText : MonoBehaviour {
     //=============================================================
-    private TestParameterManager tParameterManager;
+    private ParameterManager parameterManager;
     private GameManager gameManager;
 
     private Text text;
@@ -18,7 +18,7 @@ public class TimeText : MonoBehaviour {
     private void Init () {
         text = transform.Find("Text").GetComponent<Text>();
         image = transform.Find("Image").GetComponent<Image>();
-        tParameterManager = GameObject.Find("TestParameterManager").GetComponent<TestParameterManager>();
+        parameterManager = GameObject.Find("ParameterManager").GetComponent<ParameterManager>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -39,8 +39,8 @@ public class TimeText : MonoBehaviour {
             image.enabled = false;
         }
 
-        minutes = (int)((tParameterManager.GameTime + 0.9f) / 60f);
-        seconds = (int)(tParameterManager.GameTime + 0.9f - minutes * 60f);
+        minutes = (int)((parameterManager.GameTime + 0.9f) / 60f);
+        seconds = (int)(parameterManager.GameTime + 0.9f - minutes * 60f);
         text.text = string.Format("{0:0}:{1:00}",minutes,seconds);
     }
 }
