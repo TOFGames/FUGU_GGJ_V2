@@ -19,7 +19,7 @@ public class SceneManagement : MonoBehaviour
         void SceneSW(int swich){
                 if(swich==1) {
                         swich=0;
-                        SceneManager.LoadScene ("MainSCene");
+                        SceneManager.LoadScene ("AbosWork");
                 }
         }
 }
