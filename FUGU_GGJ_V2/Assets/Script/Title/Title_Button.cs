@@ -10,7 +10,7 @@ public class Title_Button : MonoBehaviour
         public GameObject How_to_Play;
         void Start()
         {
-
+           AboProto.AudioManager.Instance.PlayBGM("OpningBGM",true);
         }
         void Update()
         {
@@ -20,6 +20,7 @@ public class Title_Button : MonoBehaviour
         { //押されたときの処理
                 if(StartButton==true) {
                         AboProto.AudioManager.Instance.PlaySE("iyahaaaa");
+                        AboProto.AudioManager.Instance.StopBGM();
                         Title_Image.Blackout=true;
                 }
                 if(HplayButton==true) {
