@@ -23,6 +23,7 @@ public class GameClear : MonoBehaviour {
         }
     }
     public void Click () {
+        AboProto.AudioManager.Instance.StopBGM();
         SceneManager.LoadScene("Title");
     }
 }
